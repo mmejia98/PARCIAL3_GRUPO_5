@@ -50,6 +50,11 @@ public class DataTableComponent extends BasePage {
         waitElementAndClick(driver.findElement(By.xpath(xpath)));
     }
 
+    public void clickDetail(String name){
+        String xpath = "//table//tbody/tr[td[contains(.,'" + name + "')]]//button[text()='Detalle']";
+        waitElementAndClick(driver.findElement(By.xpath(xpath)));
+    }
+
     public void goToPage(int page){
         String xpath = "//a[text()='" + page + "']";
         waitElementToBeClickable(driver.findElement(By.xpath(xpath)));

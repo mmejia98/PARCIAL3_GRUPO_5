@@ -14,7 +14,6 @@ public abstract class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
     }
 
     public void waitElementAndSendKeys(WebElement element, String text) {

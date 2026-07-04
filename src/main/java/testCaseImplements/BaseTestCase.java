@@ -7,6 +7,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import pages.LoginPage;
 
+import java.time.Duration;
+
 public abstract class BaseTestCase {
 
     protected static WebDriver driver;
@@ -14,6 +16,7 @@ public abstract class BaseTestCase {
     @BeforeClass
     public static void beforeClass() {
         driver = new EdgeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         driver.manage().window().maximize();
         driver.get("http://3.144.42.175/login");
 
