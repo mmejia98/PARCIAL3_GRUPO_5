@@ -7,20 +7,20 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import pages.LoginPage;
 
-public class BaseTestCase {
+public abstract class BaseTestCase {
 
     protected static WebDriver driver;
 
     @BeforeClass
     public static void beforeClass() {
         driver = new EdgeDriver();
+        driver.manage().window().maximize();
         driver.get("http://3.144.42.175/login");
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.enterEmail("super@tdc.com");
         loginPage.enterPassword("admin123");
         loginPage.clickLoginButton();
-
     }
 
     @BeforeMethod

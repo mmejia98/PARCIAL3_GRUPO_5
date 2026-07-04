@@ -13,19 +13,19 @@ public class LoginPage extends BasePage{
     }
 
     @FindBy(id = "email")
-    public WebElement emailInput;
+    private WebElement emailInput;
 
     @FindBy(id = "password")
-    public WebElement passwordInput;
+    private WebElement passwordInput;
 
     @FindBy(xpath = "//button[@type='submit']")
-    public WebElement loginButton;
+    private WebElement loginButton;
 
     @FindBy(xpath = "//a[contains(@href, '/forgot-password')]")
-    public WebElement resetPasswordLink;
+    private WebElement resetPasswordLink;
 
     @FindBy(name = "remember")
-    public WebElement rememberCheckBox;
+    private WebElement rememberCheckBox;
 
     public void enterEmail(String email){
         this.waitElementAndSendKeys(emailInput, email);
