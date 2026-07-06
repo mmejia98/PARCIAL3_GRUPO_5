@@ -3,6 +3,7 @@ package testCaseImplements;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import pages.LoginPage;
@@ -31,9 +32,14 @@ public abstract class BaseTestCase {
 
     }
 
+    @AfterMethod
+    public void afterMethod() {
+        driver.get("http://3.144.42.175/dashboard");
+    }
+
     @AfterClass
     public static void afterClass() {
-        //driver.close();
+        driver.quit();
     }
 
 }

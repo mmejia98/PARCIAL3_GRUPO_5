@@ -45,6 +45,9 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = "/html/body/div[2]/div[2]/div/div[2]/form/button")
     private WebElement saveProductButton;
 
+    @FindBy(xpath = "/html/body/div[2]/div[2]/div")
+    private WebElement productForm;
+
     public void clickCreateProductButton(){
         this.waitElementAndClick(createProductButton);
     }
@@ -83,6 +86,21 @@ public class ProductPage extends BasePage {
 
     public ComboBoxComponent getSelectOriginCountryInput(){
         return selectOriginCountryInput;
+    }
+
+    public void searchProduct(String text){
+        waitElementToBeInvisible(productForm);
+        dataTable.search(text);
+    }
+
+    public boolean isProductPresentOnDatatable(String code){
+        WebElement row = dataTable.getRowContaining(code);
+        return row.isDisplayed();
+    }
+
+    public String getValidationText(){
+        String xpath = "//span[contains(@class,'text-red-500')]" ;
+        return waitElement(By.xpath(xpath)).getText();
     }
 
 }

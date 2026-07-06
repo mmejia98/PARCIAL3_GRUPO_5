@@ -72,4 +72,12 @@ public abstract class BasePage {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
+    public void waitElementToBeInvisible(WebElement element){
+        Wait<WebDriver> wait = new FluentWait<>(this.driver)
+                .withTimeout(Duration.ofSeconds(10))
+                .pollingEvery(Duration.ofSeconds(1))
+                .ignoring(NoSuchElementException.class);
+        wait.until(ExpectedConditions.invisibilityOf(element));
+    }
+
 }

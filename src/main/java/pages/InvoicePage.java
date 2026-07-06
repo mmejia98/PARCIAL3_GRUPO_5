@@ -48,6 +48,9 @@ public class InvoicePage extends BasePage{
     @FindBy(xpath = "/html/body/div[2]/div[2]/div/div[2]/form/button")
     private WebElement saveInvoiceButton;
 
+    @FindBy(xpath = "/html/body/div[2]/div[2]/div")
+    private WebElement invoiceForm;
+
     public void clickCreateInvoiceButton(){
         this.waitElementAndClick(createInvoiceButton);
     }
@@ -86,6 +89,21 @@ public class InvoicePage extends BasePage{
 
     public ComboBoxComponent getSelectProductInput(){
         return selectProductInput;
+    }
+
+    public void searchInvoice(String text){
+        waitElementToBeInvisible(invoiceForm);
+        dataTable.search(text);
+    }
+
+    public boolean isInvoicePresentOnDatatable(String numInvoice){
+        WebElement row = dataTable.getRowContaining(numInvoice);
+        return row.isDisplayed();
+    }
+
+    public String getValidationText(){
+        String xpath = "//span[contains(@class,'text-red-500')]" ;
+        return waitElement(By.xpath(xpath)).getText();
     }
 
 }

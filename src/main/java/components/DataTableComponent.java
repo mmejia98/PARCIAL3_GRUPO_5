@@ -37,7 +37,7 @@ public class DataTableComponent extends BasePage {
 
     public WebElement getRowContaining(String name) {
         String xpath = "//table//tbody/tr[td[contains(normalize-space(),'" + name + "')]]";
-        return driver.findElement(By.xpath(xpath));
+        return waitElement(By.xpath(xpath));
     }
 
     public void clickEdit(String name){
