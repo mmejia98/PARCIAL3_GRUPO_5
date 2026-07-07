@@ -6,6 +6,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
+import java.io.IOException;
 
 public class ScreenshotUtils {
 
@@ -16,7 +17,7 @@ public class ScreenshotUtils {
 
             try{
                 FileUtils.copyFileToDirectory(screenshot, new File("./target/images/"+classname+"/"+testCaseName));
-            }catch (Exception e){
+            }catch (IOException e){
                 e.printStackTrace();
             }
         }

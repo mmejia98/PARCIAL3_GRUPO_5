@@ -1,15 +1,18 @@
 package testcase_parcial3;
 
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.InvoicePage;
 import pages.LeftMenuPage;
 import testCaseImplements.BaseTestCase;
+import testCaseImplements.TestListener;
 import utils.ScreenshotUtils;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+@Listeners(TestListener.class)
 public class InvoiceModuleTestCases extends BaseTestCase {
 
     @Test
